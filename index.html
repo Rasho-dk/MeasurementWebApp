@@ -15,22 +15,22 @@
 
         <nav class="navbar navbar-light bg-white shadow mb-4"> 
             <div class="container-fluid">
-              <a class="navbar-brand" href="index.html"><img width="150" src="/MeasurementWebApp/Images/LogoBanner.png" alt=""></a>
+              <a class="navbar-brand" href="index.html"><img width="150" src="/Images/LogoBanner.png" alt=""></a>
                 <div> 
                     <div class="btn-group dropstart">
                       <button type="button" class="dropdown me-3 btn btn-light" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa-solid fa-user" style="color: #484747;"></i>
                       </button>
                       <div class="dropdown-menu p-3" style="width: 250px">
-                        <input class="form-control mt-1" placeholder="Email">
-                        <input class="form-control mt-1" placeholder="Kodeord">
+                        <input v-model="username" class="form-control mt-1" placeholder="Username">
+                        <input v-model="password" class="form-control mt-1" placeholder="Kodeord">
                         <div class="d-flex justify-content-center my-1">
-                          <button type="submit" class="btn btn-success text-center w-100 text-white">Log ind</button>
+                          <button type="submit" @click="login()" class="btn btn-success text-center w-100 text-white">Log ind</button>
+                          <button v-if="token !== null" @click="logout()">Logout</button>
                         </div>               
                       </div>
                     </div>
                     
-
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -58,10 +58,10 @@
 
         <!--Content-->
         <div class="container">
-            <img src="/MeasurementWebApp/Images/LogoBanner.png" class="w-100">
+            <img src="/Images/LogoBanner.png" class="w-100">
         </div>
 
-        <footer class="d-flex justify-content-around container-fluid py-3 shadow fixed-bottom">
+        <footer class="d-flex justify-content-around container-fluid py-3 shadow">
                 <div class="d-flex flex-column justify-content-center" style="width: 40vw; max-width: 500px;">
                     <h1>Kontakt os</h1>
                     <input type="text" placeholder="Email" class="form-control my-1">
@@ -69,7 +69,7 @@
                     <textarea name="Besked" class="form-control my-1" placeholder="Besked" id="" cols="5" rows="5"></textarea>
                     <button class="btn btn-success w-100">Send</button>
                 </div>
-                <img src="/MeasurementWebApp/Images/Logo.png" class="" style="max-height: 350px; max-width: 350px;"> 
+                <img src="/Images/Logo.png" class="" style="max-height: 350px; max-width: 350px;"> 
         </footer>
 
     </div>
