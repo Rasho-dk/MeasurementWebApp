@@ -41,13 +41,11 @@ app = Vue.createApp({
                 alert(ex.message)
             }
         },
-        getRecentMeasurements(){
-            // const reverseMeasurements = this.measurements.reverse()
-            // this.recentMeasurements = reverseMeasurements.slice(0, rooms.length)
+        // getRecentMeasurements(){
 
-            this.recentMeasurements = this.measurements.slice(-3)
-            console.log(this.recentMeasurements)
-        },
+        //     this.recentMeasurements = this.measurements.slice(-roomAmount())
+        //     console.log(this.recentMeasurements)
+        // },
 
 
     }
