@@ -10,6 +10,7 @@ app = Vue.createApp({
             measurements: [],
             rooms: [],
             institutionId: 1,
+            page: 1
         }
     },
 
@@ -48,10 +49,12 @@ app = Vue.createApp({
         },
 
         nextPage() {
+            this.page += 1
             // Get measurements for next page
         },
 
         previousPage() {
+            this.page -= 1
             // Get measurements for previous page
         },
     }
