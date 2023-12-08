@@ -38,6 +38,22 @@ app = Vue.createApp({
                 alert(ex.message)
             }
         },
+
+        async getMeasurements() {
+            const response = await axios.get(urlMeasurement, {
+                headers: {
+                    // Pagination headers
+                }
+            })
+        },
+
+        nextPage() {
+            // Get measurements for next page
+        },
+
+        previousPage() {
+            // Get measurements for previous page
+        },
     }
 })
 
