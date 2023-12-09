@@ -1,4 +1,5 @@
 api = "https://measurementapi.azurewebsites.net/api/Measurements"
+axios.defaults.headers.common["Authorization"] = 'Bearer' + localStorage.getItem('token')
 
 /// TODO: PAGINATION
 
@@ -9,11 +10,14 @@ app = Vue.createApp({
             measurements: [],
             page: 1,
             pageSize: 20,
+            username: null
+            
         }
     },
 
     async created(){
         await this.getMeasurements()
+        this.username = localStorage.getItem('username')
     },
 
     methods: {
@@ -36,6 +40,11 @@ app = Vue.createApp({
                 await this.getMeasurements()
             }
         },
+        logout(){
+            localStorage.removeItem('token')
+            this.username = null
+            window.location.href = "/index.html"
+        }
     }
 })
 

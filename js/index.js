@@ -2,6 +2,7 @@ api = "https://measurementapi.azurewebsites.net/api/Login"
 
 axios.defaults.headers.common["Authorization"] = 'Bearer' + localStorage.getItem('token')
 
+
 app = Vue.createApp({
     data() {
         return{
@@ -43,6 +44,7 @@ app = Vue.createApp({
         async isAuthenticated() {
            data = parseJwt(localStorage.getItem('token'))
            this.username = data.unique_name[0]
+           saveUsername = localStorage.setItem('username', this.username)
            // jti is unique_token_id chage for each time u send request to bake new token
            //"jti" claim to a unique value for that specific token
            if(data.jti !==null){
