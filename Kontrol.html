@@ -54,7 +54,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="measurement in recentMeasurements">
+                    <tr v-for="measurement in measurements.slice(-rooms.length)">
                         <td>{{measurement.roomId}}</td>
                         <td>{{parseFloat(measurement.temperature).toFixed(2)}}</td>
                         <td>{{parseFloat(measurement.humidity).toFixed(2)}}</td>

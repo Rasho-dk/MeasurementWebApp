@@ -1,29 +1,26 @@
 urlRoom = "https://measurementapi.azurewebsites.net/api/Rooms"
 urlMeasurement = "https://measurementapi.azurewebsites.net/api/Measurements"
-urlInstitution = ""
 
+/// TODO: PAGINATION
 
 app = Vue.createApp({
     data(){
-        return{
-            rooms: [],
+        return {
+            title: "Målingshistorik",
             measurements: [],
-            recentMeasurements: [],
-            institution: []
-
+            rooms: [],
+            institutionId: 1,
+            page: 1
         }
-    } ,
+    },
 
     async created(){
-
         await this.getAllMeasurements()
         await this.getAllRooms()
-        this.getRecentMeasurements()
-        
     },
 
     methods: {
-        async getAllMeasurements(){
+        async getAllMeasurements() {
             try{
                 const response = await axios.get(urlMeasurement)
                 this.measurements = await response.data
@@ -32,6 +29,7 @@ app = Vue.createApp({
                 alert(ex.message)
             }
         },
+
         async getAllRooms(){
             try{
                 const response = await axios.get(urlRoom)
@@ -41,15 +39,25 @@ app = Vue.createApp({
                 alert(ex.message)
             }
         },
-        // getRecentMeasurements(){
 
-        //     this.recentMeasurements = this.measurements.slice(-roomAmount())
-        //     console.log(this.recentMeasurements)
-        // },
+        async getMeasurements() {
+            const response = await axios.get(urlMeasurement, {
+                headers: {
+                    // Pagination headers
+                }
+            })
+        },
 
+        nextPage() {
+            this.page += 1
+            // Get measurements for next page
+        },
 
+        previousPage() {
+            this.page -= 1
+            // Get measurements for previous page
+        },
     }
 })
-
 
 app.mount("#app")

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@next" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/5d5c0091b5.js" crossorigin="anonymous"></script>
+    <title>Home</title>
+</head>
+<body>
+    <div id="app">
+
+        <nav class="navbar navbar-light bg-white shadow mb-4"> 
+            <div class="container-fluid">
+              <a class="navbar-brand" href="index.html"><img width="150" src="/Images/LogoBanner.png" alt=""></a>
+                <div> 
+                    <div class="btn-group dropstart">
+                      <button type="button" class="dropdown me-3 btn btn-light" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-user" style="color: #484747;"></i>
+                      </button>
+                      <div class="dropdown-menu p-3" style="width: 250px">
+                        <input v-model="username" class="form-control mt-1" placeholder="Username">
+                        <input v-model="password" class="form-control mt-1" placeholder="Kodeord">
+                        <div class="d-flex justify-content-center my-1">
+                          <button type="submit" @click="login()" class="btn btn-success text-center w-100 text-white">Log ind</button>
+                          <button v-if="token !== null" @click="logout()">Logout</button>
+                        </div>               
+                      </div>
+                    </div>
+                    
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                </div>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Kontrol</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Om os</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Kontakt</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </nav>
+
+
+        <!--Content-->
+        <div class="container">
+            <h1 class="my-3">Historik</h1>
+              <table class="table table-bordered table-striped">
+                  <thead>
+                      <tr>
+                          <th>Lokale Id</th>
+                          <th>Tidsstempel</th>
+                          <th>Temperatur</th>
+                          <th>Luftfugtighed</th>
+                          <th>Lufttryk</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr v-for="measurement in measurements">
+                          <td>{{measurement.roomId}}</td>
+                          <td>{{new Date(measurement.date).toUTCString()}}</td>
+                          <td>{{parseFloat(measurement.temperature).toFixed(2)}}</td>
+                          <td>{{parseFloat(measurement.humidity).toFixed(2)}}</td>
+                          <td>{{parseFloat(measurement.pressure).toFixed(2)}}</td>
+                      </tr>
+                  </tbody>
+              </table>
+
+              <div id="controls" class="d-flex align-items-baseline">
+                <button class="btn btn-success me-3" @click="previousPage()">Previous</button>
+                <p class="text-center">Side {{ page }}</p>
+                <button class="btn btn-success ms-3" @click="nextPage()">Next</button>
+              </div>
+          </div>
+
+
+        <footer class="d-flex justify-content-around container-fluid py-1 shadow mt-3">
+                <div class="d-flex flex-column justify-content-center" style="width: 40vw; max-width: 500px;">
+                    <h1>Kontakt os</h1>
+                    <input type="text" placeholder="Email" class="form-control my-1">
+                    <input type="text" placeholder="Navn" class="form-control my-1">
+                    <textarea name="Besked" class="form-control my-1" placeholder="Besked" id="" cols="5" rows="5"></textarea>
+                    <button class="btn btn-success w-100">Send</button>
+                </div>
+                <img src="/Images/Logo.png" class="my-3" style="max-height: 325px; max-width: 325px;"> 
+        </footer>
+
+    </div>
+    <script src="/js/log.js"></script>
+</body>
+</html>
+
+<style>
+  .dropdown-menu-center {
+    right: auto;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+}
+</style>
