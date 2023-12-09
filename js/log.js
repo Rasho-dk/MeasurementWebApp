@@ -10,13 +10,15 @@ app = Vue.createApp({
             measurements: [],
             rooms: [],
             institutionId: 1,
-            page: 1
+            page: 1,
+            pageSize: 20,
         }
     },
 
     async created(){
-        await this.getAllMeasurements()
-        await this.getAllRooms()
+        //await this.getAllMeasurements()
+        //await this.getAllRooms()
+        await this.getMeasurements()
     },
 
     methods: {
@@ -41,21 +43,23 @@ app = Vue.createApp({
         },
 
         async getMeasurements() {
-            const response = await axios.get(urlMeasurement, {
-                headers: {
-                    // Pagination headers
-                }
-            })
+            url = urlMeasurement + "?page=" + this.page + "&amount=" + this.pageSize
+            const response = await axios.get(url)
+            this.measurements = await response.data
         },
 
         nextPage() {
-            this.page += 1
-            // Get measurements for next page
+            if (this.measurements.length == this.pageSize) {
+                this.page += 1
+                this.getMeasurements()
+            }
         },
 
         previousPage() {
-            this.page -= 1
-            // Get measurements for previous page
+            if (this.page > 1) {
+                this.page -= 1
+                this.getMeasurements()
+            }
         },
     }
 })
