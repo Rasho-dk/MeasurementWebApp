@@ -53,14 +53,16 @@
                         <th>Lufttryk</th>
                     </tr>
                 </thead>
+                
                 <tbody>
                     <tr v-for="measurement in measurements.slice(-rooms.length)">
-                        <td>{{measurement.roomId}}</td>
-                        <td>{{parseFloat(measurement.temperature).toFixed(2)}}</td>
-                        <td>{{parseFloat(measurement.humidity).toFixed(2)}}</td>
-                        <td>{{parseFloat(measurement.pressure).toFixed(2)}}</td>
+                        <td><a :href="'./Information.html?roomid=' + measurement.roomId" :key="measurement.roomId" style="text-decoration:none; color:black; font-weight:bold">{{measurement.roomId}}</a></td>
+                        <td><a>{{parseFloat(measurement.temperature).toFixed(2)}}</a></td>
+                        <td><a>{{parseFloat(measurement.humidity).toFixed(2)}}</a></td>
+                        <td><a>{{parseFloat(measurement.pressure).toFixed(2)}}</a></td>
                     </tr>
                 </tbody>
+                 
             </table>
         </div>
 

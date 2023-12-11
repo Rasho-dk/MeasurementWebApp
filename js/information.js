@@ -9,11 +9,14 @@ app = Vue.createApp({
       dataIngraph: [],
       allMeasurementData: [],
       allRecentMeasurements: [],
-      chooseMeasurement : null
+      chooseMeasurement : null,
+      roomId: null
     } 
   },
   async created(){
     this.getAllMeasurements()
+    const urlParameter = new URLSearchParams(window.location.search)
+    this.roomId = parseInt(urlParameter.get("roomid"))
   },
 
   methods: {
