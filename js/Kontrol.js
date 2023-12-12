@@ -9,7 +9,8 @@ app = Vue.createApp({
             rooms: [],
             measurements: [],
             recentMeasurements: [],
-            institution: []
+            institution: [],
+            measurementId: null
 
         }
     } ,
@@ -18,7 +19,7 @@ app = Vue.createApp({
 
         await this.getAllMeasurements()
         await this.getAllRooms()
-        this.getRecentMeasurements()
+        
         
     },
 
