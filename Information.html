@@ -46,24 +46,23 @@
           </nav>
 
         <!--Content-->
-          <label for="measurement">Choose a measurement:</label>
+         <!-- <label for="measurement">Choose a measurement:</label>
             <select name="measurement" id="getmeasurement">
               <option value="temperatur">temperatur</option>
               <option value="humidity">humidity</option>
               <option value="pressure">pressure</option>
-            </select>
+            </select> -->
             
         <div class="container">
           <div class="row">
-              <div class="col-6">
-                <div id="linechart_material"></div>
+              <div class="col-6" id="linechart_material" >
               </div>
-              <div class="col-6">
+              <div class="col-6" id="columnchart_values">
               </div>
           </div>
         </div>
 
-        <footer class="d-grid mt-4 fixed-bottom shadow-lg py-3 justify-content-center" style="position: relative;">
+        <footer class="d-grid mt-4 fixed-bottom shadow-lg py-3 justify-content-center" style="position: relative  ;">
             <div class="row container"> 
                 <div class="col-6">
                     <input type="text" placeholder="Email" class="form-control my-1">

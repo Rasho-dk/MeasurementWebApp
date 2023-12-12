@@ -1,5 +1,8 @@
 google.charts.load('current', {'packages':['line']});
 google.charts.setOnLoadCallback(drawChart);
+google.charts.load("current", {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawBar);
+
 
 const baseUrl = "https://measurementapi.azurewebsites.net/api/Measurements"
 
@@ -67,13 +70,16 @@ var measurementData = [
 [13,  4.8,  6.3,  3.6],
 [14,  4.2,  6.2,  3.4]]
 
+
 function drawChart() {
 
 var data = new google.visualization.DataTable();
-data.addColumn('number', 'Dag');
-data.addColumn('number', 'Temperatur');
+data.addColumn('number', 'Dag', { role: "style" });
+data.addColumn('number', 'Temperatur', 'color: #2E8B57'	);
 data.addColumn('number', 'Luftfugtighed');
 data.addColumn('number', 'Lufttryk');
+
+
 
 
 
@@ -81,11 +87,42 @@ data.addRows(measurementData);
 
 var options = {
   chart: {
-    title: 'Box Office Earnings in First Two Weeks of Opening',
+    title: 'Graf over målinger i linechart form',
   },
+  height: 400
 };
 
 var chart = new google.charts.Line(document.getElementById('linechart_material'));
 
 chart.draw(data, google.charts.Line.convertOptions(options));
+
+
+
+}
+
+function drawBar() {
+  var data = new google.visualization.arrayToDataTable([
+    ['Værdi', 'De seneste målinger', { role: "style" }],
+    ["Temperatur", 44, 'color: #2E8B57'	],
+    ["Luftfugtighed", 94, 'color: #32CD32'],
+    ["Lufttryk", 90, 'color: #228B22'],
+  ]);
+
+  var view = new google.visualization.DataView(data);
+  view.setColumns([0, 1,
+                   { calc: "stringify",
+                     sourceColumn: 1,
+                     type: "string",
+                     role: "annotation" },
+                   2]);
+
+  var options = {
+    title: "Seneste målinger",
+    width: 600,
+    height: 450,
+    bar: {groupWidth: "95%"},
+    legend: { position: "none" },
+  };
+  var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+  chart.draw(view, options);
 }
