@@ -23,7 +23,7 @@
                       <div class="dropdown-menu p-3" style="width: 250px">
                         <h6 class="text-center mb-3"><strong>Username : </strong>{{ username }}</h6>
                         <div class="d-flex justify-content-center my-1">
-                          <button v-if="accessJti !== null" @click="logout()" type="submit" class="btn btn-danger text-center w-100 text-white">Logout</button>
+                          <button v-if="username !== null" @click="logout()" type="submit" class="btn btn-danger text-center w-100 text-white">Logout</button>
                         </div>               
                       </div>
                     </div>

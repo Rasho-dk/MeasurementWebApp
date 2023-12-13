@@ -10,7 +10,8 @@ app = Vue.createApp({
             measurements: [],
             page: 1,
             pageSize: 20,
-            username: null
+            username: null,
+            accessJti: null
             
         }
     },
@@ -42,6 +43,7 @@ app = Vue.createApp({
         },
         logout(){
             localStorage.removeItem('token')
+            localStorage.removeItem('username')
             this.username = null
             window.location.href = "/index.html"
         }
