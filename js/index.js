@@ -1,5 +1,5 @@
 api = "https://measurementapi.azurewebsites.net/api/Login"
-
+ap ="http://localhost:5034/api/Login" //used for debuging
 axios.defaults.headers.common["Authorization"] = 'Bearer' + localStorage.getItem('token')
 
 
@@ -9,6 +9,8 @@ app = Vue.createApp({
             Title: "Klimakontrol",
             username: null,
             password: null,
+            password2: null,
+            mail: null,
             accessJti: null,
             contactMail: null,
             contactName: null,
@@ -20,13 +22,30 @@ app = Vue.createApp({
     },
 
     methods: {
-        async login() {
-            console.log("Run")
-        
-            // url = "http://localhost:5034/api/login" + "?username=" + this.username  + "&password=" + this.password
-            const url = `http://localhost:5034/api/Login`
+        async userRegister(){
+            if(this.password === this.password2){
+                await axios.post(api + "/register",{
+                    username: String(this.username),
+                    password: String(this.password),
+                    mail: String(this.mail)
+                }).then(response => {
+                    console.log(response)
+                }).catch(error => {
+                    console.log(error.message)
+                
+                })
+                window.location.href = "/index.html"
+            }
+            else {
+                alert("Passwords do not match")
+            }
             
-            await axios.post(url, {
+
+        },
+        // Login function
+        async login() {
+            console.log("Run")    
+            await axios.post(api, {
                 username: String(this.username),
                 password: String(this.password)
             }
@@ -61,8 +80,7 @@ app = Vue.createApp({
            if(data.jti !==null){
             this.accessJti = true
            }
-        
-           
+              
         },
 
         async sendMail() {
@@ -96,7 +114,8 @@ app = Vue.createApp({
             this.contactMail = null
             this.contactMessage = null
             this.contactName = null
-        }
+        },
+
     }
 })
 

@@ -1,7 +1,11 @@
 api = "https://measurementapi.azurewebsites.net/api/Measurements"
-axios.defaults.headers.common["Authorization"] = 'Bearer' + localStorage.getItem('token')
 
-/// TODO: PAGINATION
+// axios.defaults.headers.common["Authorization"] = 'Bearer' + localStorage.getItem('token') //// den virker ikke derfor har jeg ændret på det. 
+
+axios.defaults.headers.common["Authorization"] =  `Bearer ${localStorage.getItem("token")}` //// den måde kan man får fat af Bearer token
+
+
+/// TODO: PAGINATION 
 
 app = Vue.createApp({
     data(){
@@ -17,6 +21,9 @@ app = Vue.createApp({
     },
 
     async created(){
+        if(!localStorage.getItem("token")){
+            window.location.href = "/accessDenied.html"
+        }
         await this.getMeasurements()
         this.username = localStorage.getItem('username')
     },

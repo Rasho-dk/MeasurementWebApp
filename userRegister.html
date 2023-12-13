@@ -9,11 +9,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/5d5c0091b5.js" crossorigin="anonymous"></script>
     <link href="/StyleSheet/style.css" rel="stylesheet" crossorigin="anonymous" >
-    <title>Home</title>
+    <title>User Register</title>
 </head>
 <body>
     <div id="app">
-
         <nav class="navbar navbar-light bg-white shadow mb-4"> 
             <div class="container-fluid">
               <a class="navbar-brand" href="./index.html"><img width="150" src="./Images/LogoBanner.png" alt=""></a>
@@ -31,9 +30,9 @@
                           <button v-else @click="logout()" type="submit" class="btn btn-danger text-center w-100 text-white">Logout</button>
                         </div>           
                         <div v-if="accessJti === null">
-                          <a href="#" id="userRegister" class="">Glemt koden?</a> 
+                          <a href="#" id="userRegister" >Glemt koden?</a> 
                           <br>
-                          <a href="./userRegister.html" id="userRegister" class="" >Opret dig</a>
+                          <a href="/userRegister.html" id="userRegister" >Opret dig</a>
                         </div>    
                       </div>
                     </div>
@@ -62,13 +61,30 @@
                 </ul>
               </div>
             </div>
-          </nav>
-          
-
-        <!--Content-->
-        <div class="container">
-            <img src="./Images/LogoBanner.png" class="w-100">
+        </nav>
+        <!-- Main -->
+        <div class="container w-25 mb-5">
+            <h2 class="text-center mt-3"><i class="fas fa-user-plus text-success me-2"></i></h2>
+            <h2 class="text-center mt-3"></h2>
+            <div class="card mb-3 my-4" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="card-body shadow-lg">
+                        <h5 class="card-title mb-3">Opret bruger</h5>
+                        <form @submit.prevent="createUser()">
+                            <!-- <label for="nameInput" class="form-label">User name</label> -->
+                            <input v-model="username" type="text" class="form-control" id="nameInput" placeholder="User name" required>
+                            <input v-model="mail" type="email" class="form-control my-3" id="emailInput" placeholder="Email" required>
+                            <input v-model="password" type="password" class="form-control" id="passwordInput" placeholder="Adgang kode" required>
+                            <input v-model="password2" type="password" class="form-control my-3" id="passwordInput" placeholder="Gentag adgangskode" required>
+                            <div class="d-flex justify-content-center my-1">
+                                <button type="submit" @click="userRegister()" class="btn btn-success text-center w-100 text-white">Opret bruger</button>
+                            </div>  
+                        </form>
+                      </div>           
+                </div>
+              </div>
         </div>
+
 
         <footer class="d-flex justify-content-around container-fluid py-3 shadow">
                 <div class="d-flex flex-column justify-content-center" style="width: 40vw; max-width: 500px;">
@@ -80,18 +96,7 @@
                 </div>
                 <img src="./Images/Logo.png" class="" style="max-height: 350px; max-width: 350px;"> 
         </footer>
-
-    </div>
-    <script src="./js/index.js"></script>
+    </div>    
 </body>
 </html>
-
-<style>
-  .dropdown-menu-center {
-    right: auto;
-    left: 50%;
-    -webkit-transform: translate(-50%, 0);
-    -o-transform: translate(-50%, 0);
-    transform: translate(-50%, 0);
-}
-</style>
+<script src="/js/index.js"></script>

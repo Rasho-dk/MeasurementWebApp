@@ -1,0 +1,15 @@
+/* User Register style a tager */
+#userRegister:link{
+    text-decoration: none;
+  }
+  #userRegister:visited{
+    color: rgb(10, 9, 9);
+  }
+  #userRegister:hover{
+    color: rgba(61, 201, 1, 0.634);
+    text-decoration: underline;
+  
+  }
+  #userRegister:active{
+    color: rgb(49, 225, 14);
+  }
