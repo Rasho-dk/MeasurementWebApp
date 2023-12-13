@@ -55,12 +55,14 @@
             </select> -->
             
         <div class="container">
+          <div v-if="roomId">Data over rumId: {{roomId}}</div>
           <div class="row">
               <div class="col-6" id="linechart_material" >
               </div>
               <div class="col-6" id="columnchart_values">
               </div>
           </div>
+          <a class="btn-success btn" :href="'./Log.html?roomid=' + roomId" :key="roomId">Historik</a>
         </div>
 
         <footer class="d-grid mt-4 fixed-bottom shadow-lg py-3 justify-content-center" style="position: relative  ;">
