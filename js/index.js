@@ -46,6 +46,7 @@ app = Vue.createApp({
 
         logout() {
             localStorage.removeItem('token')
+            localStorage.removeItem('username')
             this.username = null
             window.location.href = "/index.html"
 
