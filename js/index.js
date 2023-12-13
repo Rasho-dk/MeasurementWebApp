@@ -27,6 +27,7 @@ app = Vue.createApp({
             const url = `http://localhost:5034/api/Login`
             
             await axios.post(url, {
+                username: String(this.username),
                 password: String(this.password)
             }
             )
