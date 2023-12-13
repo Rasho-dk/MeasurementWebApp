@@ -19,9 +19,15 @@ app = Vue.createApp({
     methods: {
         async login() {
             console.log("Run")
-            url = "http://localhost:5034/api/login" + "?username=" + this.username + "&password=" + this.password
-
-            await axios.post(url).then(response => {
+        
+            // url = "http://localhost:5034/api/login" + "?username=" + this.username  + "&password=" + this.password
+            const url = `http://localhost:5034/api/Login?username=` + this.username;
+            
+            await axios.post(url, {
+                password: String(this.password)
+            }
+            )
+            .then(response => {
                 if (response.data.token) {
                     token = response.data.token
                     localStorage.setItem('token', token)
