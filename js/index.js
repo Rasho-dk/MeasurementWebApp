@@ -9,7 +9,10 @@ app = Vue.createApp({
             Title: "Klimakontrol",
             username: null,
             password: null,
-            accessJti: null
+            accessJti: null,
+            contactMail: null,
+            contactName: null,
+            contactMessage: null
         }
     },
     async created() {
@@ -21,10 +24,9 @@ app = Vue.createApp({
             console.log("Run")
         
             // url = "http://localhost:5034/api/login" + "?username=" + this.username  + "&password=" + this.password
-            const url = `http://localhost:5034/api/Login?username=` + this.username;
+            const url = `http://localhost:5034/api/Login`
             
             await axios.post(url, {
-                //This is the body of the logIn function.
                 password: String(this.password)
             }
             )
@@ -59,6 +61,39 @@ app = Vue.createApp({
            }
         
            
+        },
+
+        async sendMail() {
+            var formData = new FormData()
+            // EmailJS settings
+            formData.append('service_id', 'service_qoxrqd6');
+            formData.append('template_id', 'template_kz1g3sk');
+            formData.append('user_id', 'bC2h-DF0h6UnrRvFD');
+
+            // Form data
+            formData.append('from_name', this.contactName)
+            formData.append('to_mail', "silasrasch@gmail.com") // The mailbox to send the contact to
+            formData.append('from_mail', this.contactMail) // The user's email
+            formData.append('message', this.contactMessage)
+
+            response = await axios.post('https://api.emailjs.com/api/v1.0/email/send-form', formData, {
+                headers: {
+                    'Content-Type': false,
+                    'Process-Data': false
+                }
+            }).then(function (response) {
+                console.log(response);
+              })
+              .catch(function (error) {
+                console.log(error);
+            });
+            this.clear()
+        },
+
+        clear() {
+            this.contactMail = null
+            this.contactMessage = null
+            this.contactName = null
         }
     }
 })
