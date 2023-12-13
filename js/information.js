@@ -13,13 +13,17 @@ app = Vue.createApp({
       allMeasurementData: [],
       allRecentMeasurements: [],
       chooseMeasurement : null,
-      roomId: null
+      roomId: null,
+      avgTemp: 23,
+      avgHumi: 37,
+      avgPres: 1012
     } 
   },
   async created(){
     this.getAllMeasurements()
     const urlParameter = new URLSearchParams(window.location.search)
     this.roomId = parseInt(urlParameter.get("roomid"))
+    //this.avgMeasurement()
   },
 
   methods: {
@@ -50,6 +54,22 @@ app = Vue.createApp({
       allMeasurementData.array.forEach(m =>  {
         dataIngraph.append([m.id, m.temperature, m.humidity, m.pressure])
       });
+    },
+
+    // Doesn't work yet - something with the forEach...
+    avgMeasurement(){
+      this.avgTemp = 0
+      this.avgHumi = 0
+      this.avgPres = 0
+      this.measurementData.forEach(measurement => {
+        this.avgTemp += measurement[1]
+        this.avgHumi += measurement[2]
+        this.avgPres += measurement[3]
+      });
+      this.avgTemp = this.avgTemp / this.measurementData.length()
+      this.avgHumi = this.avgHumi / this.measurementData.length()
+      this.avgPres = this.avgPres / this.measurementData.length()
+      console.log(this.avgMeasurement())
     }
   }
 

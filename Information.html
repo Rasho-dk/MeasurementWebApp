@@ -55,12 +55,39 @@
             </select> -->
             
         <div class="container">
-          <div v-if="roomId">Data over rumId: {{roomId}}</div>
+          <h1 style="text-align: center; margin-bottom: 20px" v-if="roomId">Data over rum: {{roomId}}</h1>
           <div class="row">
-              <div class="col-6" id="linechart_material" >
+            <div class="col-6" id="linechart_material" >
+            </div>
+            <div class="col-6" id="columnchart_values">
+            </div>
+          </div>
+          <div class="row" style="margin-bottom: 20px;">
+            <h4 style="text-align: center; margin-bottom: 20px;">Gennemsnitlige målinger</h4>
+            <div class="col-4">
+              <div class="card" style="width: 90%; background-color: rgb(154, 234, 168)">
+                <p></p>
+                <h4 class="card-text" style="text-align: center;">{{avgTemp}}</h4>
+                <p class="card-text" style="text-align: center;">Temperatur</p>
+                <p></p>
               </div>
-              <div class="col-6" id="columnchart_values">
+            </div>
+            <div class="col-4">
+              <div class="card" style="width: 90%; background-color:rgb(154, 234, 168)">
+                <p></p>
+                <h4 class="card-text" style="text-align: center;">{{avgHumi}}</h4>
+                <p class="card-text" style="text-align: center;">Luftfugtighed</p>
+                <p></p>
               </div>
+            </div>
+            <div class="col-4">
+              <div class="card" style="width: 90%; background-color: rgb(154, 234, 168)">
+                <p></p>
+                <h4 class="card-text" style="text-align: center;">{{avgPres}}</h4>
+                <p class="card-text" style="text-align: center;">Lufttryk</p>
+                <p></p> 
+              </div>
+            </div>
           </div>
           <a class="btn-success btn" :href="'./Log.html?roomid=' + roomId" :key="roomId">Historik</a>
         </div>
