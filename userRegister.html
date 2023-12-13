@@ -72,9 +72,9 @@
                         <h5 class="card-title mb-3">Opret bruger</h5>
                         <form @submit.prevent="createUser()">
                             <!-- <label for="nameInput" class="form-label">User name</label> -->
-                            <input v-model="username" type="text" class="form-control" id="nameInput" placeholder="User name" required>
+                            <input v-model="username" type="text" class="form-control" id="nameInput" placeholder="User name" required minlength="10">
                             <input v-model="mail" type="email" class="form-control my-3" id="emailInput" placeholder="Email" required>
-                            <input v-model="password" type="password" class="form-control" id="passwordInput" placeholder="Adgang kode" required>
+                            <input v-model="password" type="password" class="form-control" id="passwordInput" placeholder="Adgangskode" required>
                             <input v-model="password2" type="password" class="form-control my-3" id="passwordInput" placeholder="Gentag adgangskode" required>
                             <div class="d-flex justify-content-center my-1">
                                 <button type="submit" @click="userRegister()" class="btn btn-success text-center w-100 text-white">Opret bruger</button>

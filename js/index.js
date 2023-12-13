@@ -1,5 +1,5 @@
 api = "https://measurementapi.azurewebsites.net/api/Login"
-// ap ="http://localhost:5034/api/Login" //used for debuging
+// api ="http://localhost:5034/api/Login" //used for debuging
 axios.defaults.headers.common["Authorization"] = 'Bearer' + localStorage.getItem('token')
 
 
@@ -30,13 +30,16 @@ app = Vue.createApp({
                     mail: String(this.mail)
                 }).then(response => {
                     console.log(response)
+                    if(this.password !==null && this.password2 !== null){
+                        window.location.href = "/index.html"
+                    }
+                 
                 }).catch(error => {
                     console.log(error.message)
                 
                 })
-                if(this.password !==null && this.password2 !== null){
-                    window.location.href = "/index.html"
-                }
+               
+              
             }
             else {
                 alert("Passwords do not match")
