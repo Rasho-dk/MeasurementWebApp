@@ -23,8 +23,8 @@
                       </button>
                       <div class="dropdown-menu p-3" style="width: 250px">
                         <input v-if="accessJti === null" v-model="username" class="form-control mt-1" placeholder="Username">
-                        <h6 class="text-center mb-3"><strong>Username : </strong>{{ username }}</h6>
-                        <input v-if="accessJti === null" v-model="password" class="form-control mt-1" placeholder="Kodeord">                        
+                        <h6 v-if="accessJti !== null" class="text-center mb-3"><strong>Username : </strong>{{ username }}</h6>
+                        <input v-if="accessJti === null" v-model="password" type="password" class="form-control mt-1" placeholder="Kodeord">                        
                         <div class="d-flex justify-content-center my-1">
                           <button v-if="accessJti === null" type="submit" @click="login()" class="btn btn-success text-center w-100 text-white">Log ind</button>
                           <button v-else @click="logout()" type="submit" class="btn btn-danger text-center w-100 text-white">Logout</button>
