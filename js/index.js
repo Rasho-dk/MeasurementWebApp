@@ -34,7 +34,9 @@ app = Vue.createApp({
                     console.log(error.message)
                 
                 })
-                window.location.href = "/index.html"
+                if(this.password !==null && this.password2 !== null){
+                    window.location.href = "/index.html"
+                }
             }
             else {
                 alert("Passwords do not match")
