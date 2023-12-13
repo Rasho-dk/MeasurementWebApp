@@ -1,5 +1,5 @@
 api = "https://measurementapi.azurewebsites.net/api/Login"
-ap ="http://localhost:5034/api/Login" //used for debuging
+// ap ="http://localhost:5034/api/Login" //used for debuging
 axios.defaults.headers.common["Authorization"] = 'Bearer' + localStorage.getItem('token')
 
 
