@@ -78,7 +78,13 @@ app = Vue.createApp({
       this.avgHumi = this.avgHumi / this.measurementData.length()
       this.avgPres = this.avgPres / this.measurementData.length()
       console.log(this.avgMeasurement())
-    }
+    },
+    logout(){
+      localStorage.removeItem('token')
+      localStorage.removeItem('username')
+      this.username = null
+      window.location.href = "/index.html"
+  }
   }
 
 }).mount("#app")

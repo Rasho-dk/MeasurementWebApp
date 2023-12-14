@@ -1,6 +1,6 @@
 api = "https://measurementapi.azurewebsites.net/api/Measurements"
 
-// axios.defaults.headers.common["Authorization"] = 'Bearer' + localStorage.getItem('token') //// den virker ikke derfor har jeg ændret på det. 
+// axios.defaults.headers.common["Authorization"] = 'Bearer ' + localStorage.getItem('token') //// den virker ikke derfor har jeg ændret på det. 
 
 axios.defaults.headers.common["Authorization"] =  `Bearer ${localStorage.getItem("token")}` //// den måde kan man får fat af Bearer token
 
