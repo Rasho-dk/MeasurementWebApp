@@ -1,6 +1,8 @@
 api = "https://measurementapi.azurewebsites.net/api/Login"
 // api ="http://localhost:5034/api/Login" //used for debuging
-axios.defaults.headers.common["Authorization"] = 'Bearer' + localStorage.getItem('token')
+
+// axios.defaults.headers.common["Authorization"] = 'Bearer' + localStorage.getItem('token')
+axios.defaults.headers.common["Authorization"] =  `Bearer ${localStorage.getItem("token")}` //// den måde kan man får fat af Bearer token
 
 
 app = Vue.createApp({

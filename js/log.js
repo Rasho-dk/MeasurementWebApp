@@ -24,8 +24,8 @@ app = Vue.createApp({
         if(!localStorage.getItem("token")){
             window.location.href = "/accessDenied.html"
         }
-        await this.getMeasurements()
         this.username = localStorage.getItem('username')
+        await this.getMeasurements()
     },
 
     methods: {

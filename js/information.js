@@ -6,6 +6,9 @@ google.charts.setOnLoadCallback(drawBar);
 
 const baseUrl = "https://measurementapi.azurewebsites.net/api/Measurements"
 
+axios.defaults.headers.common["Authorization"] =  `Bearer ${localStorage.getItem("token")}` //// den måde kan man får fat af Bearer token
+
+
 app = Vue.createApp({
   data(){
     return{
@@ -16,10 +19,15 @@ app = Vue.createApp({
       roomId: null,
       avgTemp: 23,
       avgHumi: 37,
-      avgPres: 1012
+      avgPres: 1012,
+      token: null,
     } 
   },
   async created(){
+    this.token = localStorage.getItem('token')
+    if(this.token === null){
+      window.location.href = "/accessDenied.html"
+    }
     this.getAllMeasurements()
     const urlParameter = new URLSearchParams(window.location.search)
     this.roomId = parseInt(urlParameter.get("roomid"))

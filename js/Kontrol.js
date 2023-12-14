@@ -2,6 +2,8 @@ urlRoom = "https://measurementapi.azurewebsites.net/api/Rooms"
 urlMeasurement = "https://measurementapi.azurewebsites.net/api/Measurements"
 urlInstitution = ""
 
+axios.defaults.headers.common["Authorization"] =  `Bearer ${localStorage.getItem("token")}` //// den måde kan man får fat af Bearer token
+
 
 app = Vue.createApp({
     data(){
@@ -10,12 +12,19 @@ app = Vue.createApp({
             measurements: [],
             recentMeasurements: [],
             institution: [],
-            measurementId: null
+            measurementId: null,
+            token: null,
+            username:null
 
         }
     } ,
 
     async created(){
+        this.token = localStorage.getItem('token')
+        if(this.token === null){
+            window.location.href = "/accessDenied.html"
+        }
+        this.username = localStorage.getItem('username')
 
         await this.getAllMeasurements()
         await this.getAllRooms()
@@ -42,11 +51,12 @@ app = Vue.createApp({
                 alert(ex.message)
             }
         },
-        // getRecentMeasurements(){
-
-        //     this.recentMeasurements = this.measurements.slice(-roomAmount())
-        //     console.log(this.recentMeasurements)
-        // },
+        logout(){
+            localStorage.removeItem('token')
+            localStorage.removeItem('username')
+            this.username = null
+            window.location.href = "/index.html"
+        }
 
 
     }
