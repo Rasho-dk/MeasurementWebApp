@@ -51,12 +51,12 @@
                     <a class="nav-link" href="./Kontrol.html">Kontrol</a>
                   </li>
                   <li class="nav-item">
+                    <a class="nav-link" href="./userRegister.html">Opret bruger</a>
+                  </li>
+                  <li class="nav-item">
                     <a class="nav-link" href="#">Om os</a>
                   </li>
-                  <li v-if="accessJti !== null" class="nav-item">
-                    <a class="nav-link" href="./Log.html">Log</a>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Kontakt</a>
+                    <a @click="scrollBottom" class="nav-link">Kontakt</a>
                   </li>
                 </ul>
               </div>
@@ -86,17 +86,23 @@
         </div>
 
 
-        <footer class="d-flex justify-content-around container-fluid py-3 shadow">
-                <div class="d-flex flex-column justify-content-center" style="width: 40vw; max-width: 500px;">
-                    <h1>Kontakt os</h1>
-                    <input v-model="contactMail" type="text" placeholder="Email" class="form-control my-1">
-                    <input v-model="contactName" type="text" placeholder="Navn" class="form-control my-1">
-                    <textarea v-model="contactMessage" name="Besked" class="form-control my-1" placeholder="Besked" id="" cols="5" rows="5"></textarea>
-                    <button @click="sendMail" class="btn btn-success w-100">Send</button>
-                </div>
-                <img src="./Images/Logo.png" class="" style="max-height: 350px; max-width: 350px;"> 
+        <footer class="d-flex justify-content-around container-fluid py-3 shadow mt-5">
+          <div class="d-flex flex-column justify-content-center" style="width: 40vw; max-width: 500px;">
+              <h1>Kontakt os</h1>
+              <input v-model="contactMail" type="text" placeholder="Email" class="form-control my-1">
+              <input v-model="contactName" type="text" placeholder="Navn" class="form-control my-1">
+              <textarea v-model="contactMessage" name="Besked" class="form-control my-1" placeholder="Besked" id="" cols="5" rows="5"></textarea>
+              <button @click="sendMail" class="btn btn-success w-100">Send</button>
+          </div>
+          <img src="./Images/Logo.png" class="" style="max-height: 350px; max-width: 350px;"> 
         </footer>
     </div>    
 </body>
 </html>
 <script src="/js/index.js"></script>
+
+<style>
+  .nav-link:hover {
+  cursor: pointer;
+}
+</style>

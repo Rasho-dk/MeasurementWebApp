@@ -99,7 +99,7 @@ app = Vue.createApp({
 
             // Form data
             formData.append('from_name', this.contactName)
-            formData.append('to_mail', "silasrasch@gmail.com") // The mailbox to send the contact to
+            formData.append('to_mail', "vgroupdev@outlook.com") // The mailbox to send the contact to
             formData.append('from_mail', this.contactMail) // The user's email
             formData.append('message', this.contactMessage)
 
@@ -123,6 +123,9 @@ app = Vue.createApp({
             this.contactName = null
         },
 
+        scrollBottom() {
+            window.scrollBy(0, 10000)
+        }
     }
 })
 
