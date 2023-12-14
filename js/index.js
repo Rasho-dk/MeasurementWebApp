@@ -10,6 +10,7 @@ app = Vue.createApp({
         return{
             Title: "Klimakontrol",
             username: null,
+            userNameRegister: null,
             password: null,
             password2: null,
             mail: null,
@@ -20,14 +21,20 @@ app = Vue.createApp({
         }
     },
     async created() {
+        if(window.location.pathname === "/userRegister.html" && !localStorage.getItem('token')) {
+            window.location.href = "/accessDenied.html";
+        }
         this.isAuthenticated()
     },
 
     methods: {
         async userRegister(){
+            if(this.userNameRegister.length < 10){
+                alert("Brugernavnet skal være på mindst 10 tegn")
+            }
             if(this.password === this.password2){
                 await axios.post(api + "/register",{
-                    username: String(this.username),
+                    username: String(this.userNameRegister),
                     password: String(this.password),
                     mail: String(this.mail)
                 }).then(response => {
@@ -64,10 +71,9 @@ app = Vue.createApp({
                     window.location.href = "/index.html"
                 }
             }).catch(error => {
-                console.log(error.message)
+                alert("Wrong username or password")
             })
 
-            console.log(this.token)
         },
 
         logout() {

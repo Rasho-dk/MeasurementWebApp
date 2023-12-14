@@ -31,8 +31,8 @@
                         </div>           
                         <div v-if="accessJti === null">
                           <a href="#" id="userRegister" >Glemt koden?</a> 
-                          <br>
-                          <a href="/userRegister.html" id="userRegister" >Opret dig</a>
+                          <!-- <br> -->
+                          <!-- <a href="/userRegister.html" id="userRegister" >Opret dig</a> -->
                         </div>    
                       </div>
                     </div>
@@ -72,7 +72,7 @@
                         <h5 class="card-title mb-3">Opret bruger</h5>
                         <form @submit.prevent="createUser()">
                             <!-- <label for="nameInput" class="form-label">User name</label> -->
-                            <input v-model="username" type="text" class="form-control" id="nameInput" placeholder="User name" required minlength="10">
+                            <input v-model="userNameRegister" type="text" class="form-control" id="nameInput" placeholder="Bruger navn" required >
                             <input v-model="mail" type="email" class="form-control my-3" id="emailInput" placeholder="Email" required>
                             <input v-model="password" type="password" class="form-control" id="passwordInput" placeholder="Adgangskode" required>
                             <input v-model="password2" type="password" class="form-control my-3" id="passwordInput" placeholder="Gentag adgangskode" required>

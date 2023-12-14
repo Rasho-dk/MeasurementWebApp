@@ -34,6 +34,8 @@ app = Vue.createApp({
     this.getAllMeasurements()
     const urlParameter = new URLSearchParams(window.location.search)
     this.roomId = parseInt(urlParameter.get("roomid"))
+    this.username = localStorage.getItem('username')
+
     //this.avgMeasurement()
   },
 
