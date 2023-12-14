@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@next" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/5d5c0091b5.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+    </script>
+    
+    <title>Omkring os</title>
+</head>
+<body>
+    <div id="app">
+
+        <nav class="navbar navbar-light bg-white shadow mb-4"> 
+            <div class="container-fluid">
+              <a class="navbar-brand" href="/index.html"><img width="150" src="./Images/LogoBanner.png" alt=""></a>
+              <div>
+                <a class="mx-3"><i class="fa-solid fa-user" style="color: #484747;"></i></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+              </div>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/index.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/Kontrol.html">Kontrol</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="./userRegister.html">Opret bruger</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Om os</a>
+                  </li>
+                  <li class="nav-item">
+                    <a @click="scrollBottom" class="nav-link">Kontakt</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+            <!-- CONTENT -->
+            <div class="d-flex justify-content-center">
+                <div class="d-flex flex-column mx-5 m-3">
+
+                    <img src="./Images/aboutBanner.png" alt="placeholder" style="height:auto; max-width:100%">
+
+
+                </div>
+                <div class="d-flex flex-column" style="max-width: 400px;">
+
+                    <h1 class="">Omkring os</h1>
+                    <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                        sed do eiusmod tempor incididunt ut labore et dolore magna 
+                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+                        ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                        Duis aute irure dolor in reprehenderit in voluptate velit 
+                        esse cillum dolore eu fugiat nulla pariatur. 
+                        Excepteur sint occaecat cupidatat non proident, sunt in 
+                        culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                    <br>
+                    <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                        sed do eiusmod tempor incididunt ut labore et dolore magna 
+                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+                        ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                        Duis aute irure dolor in reprehenderit in voluptate velit 
+                        esse cillum dolore eu fugiat nulla pariatur. 
+                        Excepteur sint occaecat cupidatat non proident, sunt in 
+                        culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                    <br>
+                    <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                        sed do eiusmod tempor incididunt ut labore et dolore magna 
+                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+                        ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                        Duis aute irure dolor in reprehenderit in voluptate velit 
+                        esse cillum dolore eu fugiat nulla pariatur. 
+                        Excepteur sint occaecat cupidatat non proident, sunt in 
+                        culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                    <br>
+                    <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                        sed do eiusmod tempor incididunt ut labore et dolore magna 
+                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+                        ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                        Duis aute irure dolor in reprehenderit in voluptate velit 
+                        esse cillum dolore eu fugiat nulla pariatur. 
+                        Excepteur sint occaecat cupidatat non proident, sunt in 
+                        culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+
+                </div>
+            </div>
+
+
+        <footer class="d-flex justify-content-around container-fluid py-3 shadow mt-5">
+          <div class="d-flex flex-column justify-content-center" style="width: 40vw; max-width: 500px;">
+              <h1>Kontakt os</h1>
+              <input v-model="contactMail" type="text" placeholder="Email" class="form-control my-1">
+              <input v-model="contactName" type="text" placeholder="Navn" class="form-control my-1">
+              <textarea v-model="contactMessage" name="Besked" class="form-control my-1" placeholder="Besked" id="" cols="5" rows="5"></textarea>
+              <button @click="sendMail" class="btn btn-success w-100">Send</button>
+          </div>
+          <img src="./Images/Logo.png" class="" style="max-height: 350px; max-width: 350px;"> 
+        </footer>
+
+    </div>
+    <script src="./js/index.js"></script>
+</body>
+</html>
+
+<style>
+  .nav-link:hover {
+  cursor: pointer;
+}
+</style>
