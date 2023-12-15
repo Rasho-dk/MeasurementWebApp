@@ -24,7 +24,7 @@ app = Vue.createApp({
 
     async created(){
         if(!localStorage.getItem("token")){
-            window.location.href = "/accessDenied.html"
+            window.location.href = "./accessDenied.html"
         }
         this.username = localStorage.getItem('username')
         await this.getMeasurements()
@@ -54,7 +54,7 @@ app = Vue.createApp({
             localStorage.removeItem('token')
             localStorage.removeItem('username')
             this.username = null
-            window.location.href = "/index.html"
+            window.location.href = "./index.html"
         },
 
         async sendMail() {

@@ -21,8 +21,8 @@ app = Vue.createApp({
         }
     },
     async created() {
-        if(window.location.pathname === "/userRegister.html" && !localStorage.getItem('token')) {
-            window.location.href = "/accessDenied.html";
+        if(window.location.pathname === "./userRegister.html" && !localStorage.getItem('token')) {
+            window.location.href = "./accessDenied.html";
         }
         this.isAuthenticated()
     },
@@ -40,7 +40,7 @@ app = Vue.createApp({
                 }).then(response => {
                     console.log(response)
                     if(this.password !==null && this.password2 !== null){
-                        window.location.href = "/index.html"
+                        window.location.href = "./index.html"
                     }
                  
                 }).catch(error => {
@@ -68,7 +68,7 @@ app = Vue.createApp({
                 if (response.data.token) {
                     token = response.data.token
                     localStorage.setItem('token', token)
-                    window.location.href = "/index.html"
+                    window.location.href = "./index.html"
                 }
             }).catch(error => {
                 alert("Wrong username or password")
@@ -80,7 +80,7 @@ app = Vue.createApp({
             localStorage.removeItem('token')
             localStorage.removeItem('username')
             this.username = null
-            window.location.href = "/index.html"
+            window.location.href = "./index.html"
 
         },
         // Process of verifying who you are. 
