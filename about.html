@@ -17,36 +17,63 @@
 <body>
     <div id="app">
 
-        <nav class="navbar navbar-light bg-white shadow mb-4"> 
-            <div class="container-fluid">
-              <a class="navbar-brand" href="./index.html"><img width="150" src="./Images/LogoBanner.png" alt=""></a>
-              <div>
-                <a class="mx-3"><i class="fa-solid fa-user" style="color: #484747;"></i></a>
+      <nav class="navbar navbar-light bg-white shadow mb-4"> 
+        <div class="container-fluid">
+          <a class="navbar-brand" href="./index.html"><img width="150" src="./Images/LogoBanner.png" alt=""></a>
+            <div> 
+                <div class="btn-group dropstart">
+                  <button type="button" class="dropdown me-3 btn btn-light" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-user" style="color: #484747;"></i>
+                  </button>
+                  <div class="dropdown-menu p-3" style="width: 250px">
+                    <input v-if="accessJti === null" v-model="username" class="form-control mt-1" placeholder="Username">
+                    <h6 v-if="accessJti !== null" class="text-center mb-3"><strong>User: </strong>{{ username }}</h6>
+                    <input v-if="accessJti === null" v-model="password" type="password" class="form-control mt-1" placeholder="Kodeord">                        
+                    <div class="d-flex justify-content-center my-1">
+                      <button v-if="accessJti === null" type="submit" @click="login()" class="btn btn-success text-center w-100 text-white">Log ind</button>
+                      <button v-else @click="logout()" type="submit" class="btn btn-danger text-center w-100 text-white">Logout</button>
+                    </div>           
+                    <div v-if="accessJti === null">
+                      <a href="#" id="userRegister" class="">Glemt koden?</a> 
+                      <!-- <br> -->
+                      <!-- <a href="./userRegister.html" id="userRegister" class="" >Opret dig</a> -->
+                    </div>    
+                  </div>
+                </div>
+                
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-              </div>
-              <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="./Kontrol.html">Kontrol</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="./userRegister.html">Opret bruger</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="./about.html">Om os</a>
-                  </li>
-                  <li class="nav-item">
-                    <a @click="scrollBottom" class="nav-link">Kontakt</a>
-                  </li>
-                </ul>
-              </div>
+
             </div>
-          </nav>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+              </li>
+              <li v-if="accessJti" class="nav-item">
+                <a class="nav-link" href="./Kontrol.html">Kontrol</a>
+              </li>
+              <li v-if="accessJti" class="nav-item">
+                <a class="nav-link" href="./userRegister.html">Opret bruger</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./about.html">Om os</a>
+              </li>
+              <!-- <li v-if="accessJti !== null" class="nav-item">
+                <a class="nav-link" href="./Log.html">Log</a>
+              </li> -->
+              <!-- <li v-if="accessJti !== null" class="nav-item">
+                <a class="nav-link" href="./Information.html">Information</a>
+              </li> -->
+              <li class="nav-item">
+                <a @click="scrollBottom" class="nav-link">Kontakt</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
             <!-- CONTENT -->
             <div class="d-flex justify-content-center">
                 <div class="d-flex flex-column mx-5 m-3">
